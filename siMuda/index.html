@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiMUDA - Semua Kebutuhan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="halamanLogin" class="halaman-login">
+
+    <h1>Selamat Datang di SiMUDA</h1>
+    <p>Silakan masuk untuk menggunakan layanan SiMUDA.</p>
+
+    <form id="formLogin">
+
+        <label>Email atau Nomor Telepon</label>
+        <input
+            type="text"
+            id="loginUser"
+            placeholder="Masukkan email atau nomor telepon"
+            required
+        >
+
+        <label>Password</label>
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Masukkan password"
+            required
+        >
+
+        <button type="submit">Masuk</button>
+
+    </form>
+
+    <p>Belum punya akun?</p>
+
+    <button type="button" id="tombolRegistrasi">
+        Daftar Sekarang
+    </button>
+
+</section>
+
+<section id="halamanRegistrasi" class="halaman-registrasi" style="display: none;">
+
+    <h1>Daftar Akun SiMUDA</h1>
+    <p>Buat akun untuk mulai menggunakan layanan SiMUDA.</p>
+
+    <form id="formRegistrasi">
+
+        <label>Nama Lengkap</label>
+        <input type="text" id="daftarNama" placeholder="Masukkan nama lengkap" required>
+
+        <label>Nomor Telepon</label>
+        <input type="tel" id="daftarTelepon" placeholder="Masukkan nomor telepon" required>
+
+        <label>Email</label>
+        <input type="email" id="daftarEmail" placeholder="Masukkan email" required>
+
+        <label>Password</label>
+        <input type="password" id="daftarPassword" placeholder="Buat password" required>
+
+        <button type="submit">Daftar</button>
+
+    </form>
+
+    <p>Sudah punya akun?</p>
+    <button type="button" id="tombolKembaliLogin">Kembali ke Login</button>
+
+</section>
+
+<div id="halamanUtama" style="display: none;">
+
+
+    
+<header>
+    <h1>SiMUDA</h1>
+    <p>Satu Aplikasi untuk Semua Kebutuhan</p>
+
+    <button type="button" onclick="bukaProfil()">
+        👤 Profil Pengguna
+    </button>
+</header>
+
+<main>
+
+        <section class="welcome">
+            <h2>Halo, Selamat Datang!</h2>
+            <p>Mau cari kebutuhan apa hari ini?</p>
+        </section>
+
+        <section class="kategori">
+            <h2>Kategori Layanan</h2>
+
+            
+<div class="daftar-kategori">
+
+    <button type="button" class="item" onclick="pilihKategori('Sembako')">
+        🛒
+        <p>Sembako</p>
+    </button>
+
+    <button type="button" class="item" onclick="pilihKategori('Makanan')">
+        🍜
+        <p>Makanan</p>
+    </button>
+
+    <button type="button" class="item" onclick="pilihKategori('Minuman')">
+        🥤
+        <p>Minuman</p>
+    </button>
+
+    <button type="button" class="item" onclick="pilihKategori('Laundry')">
+        🧺
+        <p>Laundry</p>
+    </button>
+
+    <button type="button" class="item" onclick="pilihKategori('Kebersihan')">
+        🧹
+        <p>Kebersihan</p>
+    </button>
+
+    <button type="button" class="item" onclick="pilihKategori('Servis')">
+        🔧
+        <p>Servis</p>
+    </button>
+
+</div>
+
+        </section>
+
+<!-- HALAMAN DAFTAR PRODUK -->
+<section id="daftarProduk" class="daftar-produk" style="display: none;">
+
+    <h2 id="judulKategori">Daftar Produk</h2>
+    <p>Pilih kebutuhan yang ingin kamu pesan.</p>
+
+    <div id="isiProduk" class="isi-produk">
+
+    </div>
+
+    <button type="button" onclick="kembaliKeKategori()">
+        Kembali ke Kategori
+    </button>
+
+</section>
+
+<!-- HALAMAN KERANJANG -->
+<section id="halamanKeranjang" class="daftar-produk" style="display: none;">
+
+    <h2>Keranjang Belanja SiMUDA</h2>
+    <p>Periksa kembali produk yang ingin kamu pesan.</p>
+
+    <div id="isiKeranjang"></div>
+
+    <h3 id="totalKeranjang">Total: Rp0</h3>
+
+    <button type="button" onclick="kembaliKeProduk()">
+        Tambah Produk
+    </button>
+
+    <button type="button" onclick="lanjutKePemesanan()">
+        Lanjut ke Pemesanan
+    </button>
+
+</section>
+
+<!-- HALAMAN PROFIL PENGGUNA -->
+<section id="halamanProfil" class="daftar-produk" style="display: none;">
+
+    <h2>Profil Pengguna</h2>
+    <p>Informasi akun pengguna SiMUDA.</p>
+
+    <label>Nama Lengkap</label>
+    <input type="text" id="profilNama" readonly>
+
+    <label>Nomor Telepon</label>
+    <input type="tel" id="profilTelepon" readonly>
+
+    <label>Email</label>
+    <input type="email" id="profilEmail" readonly>
+
+    <label>Alamat</label>
+    <textarea id="profilAlamat" placeholder="Masukkan alamat kamu"></textarea>
+
+    <button type="button" onclick="simpanProfil()">
+        Simpan Profil
+    </button>
+
+    <button type="button" onclick="tutupProfil()">
+        Kembali ke Beranda
+    </button>
+
+</section>
+
+<!-- HALAMAN STATUS -->
+<section id="halamanStatus" class="daftar-produk" style="display: none;">
+
+    <h2>Status Pesanan SiMUDA</h2>
+    <p>Berikut informasi status pesanan kamu.</p>
+
+    <div id="isiStatusPesanan">
+        <h3>Pesanan Berhasil Dibuat!</h3>
+        <p>Status: Menunggu Diproses</p>
+    </div>
+
+    <button type="button" onclick="kembaliKeKategori()">
+        Kembali ke Beranda
+    </button>
+
+</section>
+
+
+<section class="pesanan">
+    <h2>Formulir Pemesanan SiMUDA</h2>
+    <p>Silakan isi data pemesanan kamu.</p>
+
+    <form id="formPesanan">
+
+        <label>Nama Pemesan</label>
+        <input type="text" id="nama"
+        placeholder="Masukkan nama kamu" required>
+
+        <label>Alamat Lengkap</label>
+        <textarea id="alamat"
+        placeholder="Masukkan alamat kamu" required></textarea>
+
+        <label>Pilih Layanan</label>
+        <select id="kategori" required>
+            <option value="">Pilih layanan</option>
+            <option value="Sembako">Sembako</option>
+            <option value="Makanan">Makanan</option>
+            <option value="Minuman">Minuman</option>
+            <option value="Laundry">Laundry</option>
+            <option value="Kebersihan">Jasa Kebersihan</option>
+            <option value="Servis">Servis</option>
+        </select>
+
+        <label>Detail Pesanan</label>
+        <textarea id="detail"
+        placeholder="Tuliskan barang atau jasa yang dibutuhkan"
+        required></textarea>
+
+        <button type="submit">Kirim Pesanan</button>
+
+    </form>
+</section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 SiMUDA</p>
+    </footer>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
